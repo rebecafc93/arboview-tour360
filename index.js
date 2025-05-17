@@ -94,11 +94,22 @@
       scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
 
-    // Create info hotspots.
     data.infoHotspots.forEach(function(hotspot) {
-      var element = createInfoHotspotElement(hotspot);
-      scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-    });
+  // Cria o infospot de informação ("i")
+  var infoElement = createInfoHotspotElement(hotspot);
+  scene.hotspotContainer().createHotspot(infoElement, {
+    yaw: hotspot.yaw,
+    pitch: hotspot.pitch
+  });
+
+  // Cria o infospot de câmera ao lado
+  var cameraElement = createCameraHotspotElement(hotspot);
+  var offsetYaw = 0.1; // Ajuste a posição lateral do ícone de câmera
+  scene.hotspotContainer().createHotspot(cameraElement, {
+    yaw: hotspot.yaw + offsetYaw,
+    pitch: hotspot.pitch
+  });
+});
 
     return {
       data: data,
@@ -344,6 +355,31 @@
       modal.classList.toggle('visible');
     };
 
+  function createCameraHotspotElement(hotspot) {
+    
+    // Cria wrapper do hotspot
+    var wrapper = document.createElement('div');
+    wrapper.classList.add('hotspot');
+    wrapper.classList.add('camera-hotspot');
+
+    // Cria imagem do ícone da câmera
+    var icon = document.createElement('img');
+    icon.src = 'img/camera.png'; // seu ícone
+    icon.classList.add('camera-hotspot-icon');
+
+    wrapper.appendChild(icon);
+
+    // Evento para abrir modal da imagem ao clicar
+    wrapper.addEventListener('click', function() {
+      showImageModal('img/caju.jpg'); // sua imagem
+    });
+
+    // Evita propagação de scroll/touch
+    stopTouchAndScrollEventPropagation(wrapper);
+
+    return wrapper;
+  }
+    
     // Show content when hotspot is clicked.
     wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
 
@@ -389,4 +425,35 @@
   // Display the initial scene.
   switchScene(scenes[0]);
 
+  function showImageModal(imgSrc) {
+    // Verifica se modal já existe
+    var existingModal = document.getElementById('image-modal');
+    if (existingModal) {
+      existingModal.querySelector('img').src = imgSrc;
+      existingModal.classList.add('visible');
+      return;
+    }
+  
+    // Cria modal
+    var modal = document.createElement('div');
+    modal.id = 'image-modal';
+    modal.classList.add('image-modal');
+  
+    var img = document.createElement('img');
+    img.src = imgSrc;
+    img.classList.add('modal-image');
+  
+    modal.appendChild(img);
+  
+    // Fecha modal ao clicar fora da imagem
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('visible');
+      }
+    });
+  
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('visible'), 10);
+  }
+  
 })();
