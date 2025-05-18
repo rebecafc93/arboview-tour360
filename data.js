@@ -34,8 +34,8 @@ var APP_DATA = {
       ],
       "infoHotspots": [
         {
-          "yaw": 0.3345443101767671,
-          "pitch": -0.15581250706834027,
+          "yaw": -1.5,  // Posição horizontal (valores negativos = esquerda)
+          "pitch": 0.2, // Posição vertical
           "title": "Árvore 1",
           "text": "texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto"
         }
