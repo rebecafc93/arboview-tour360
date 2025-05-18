@@ -104,10 +104,9 @@
 
       // Cria o infospot de câmera ao lado
       var cameraElement = createCameraHotspotElement(hotspot);
-      var offsetYaw = 0.15; // Ajuste este valor para controlar a distância
       scene.hotspotContainer().createHotspot(cameraElement, {
-        yaw: hotspot.yaw + offsetYaw,  // Valor POSITIVO coloca à direita
-        pitch: hotspot.pitch
+          yaw: hotspot.yaw + 0.15,  // Valor positivo para direita
+          pitch: hotspot.pitch + 0.05  // Ajuste vertical leve
       });
     });
 
