@@ -104,9 +104,9 @@
 
       // Cria o infospot de câmera ao lado
       var cameraElement = createCameraHotspotElement(hotspot);
-      var offsetYaw = 0.1; // Ajuste a posição lateral do ícone de câmera
+      var offsetYaw = 0.15; // Ajuste este valor para controlar a distância
       scene.hotspotContainer().createHotspot(cameraElement, {
-        yaw: hotspot.yaw + offsetYaw,
+        yaw: hotspot.yaw + offsetYaw,  // Valor POSITIVO coloca à direita
         pitch: hotspot.pitch
       });
     });
@@ -378,7 +378,8 @@
     wrapper.appendChild(icon);
 
     // Evento para abrir modal da imagem ao clicar
-    wrapper.addEventListener('click', function() {
+    wrapper.addEventListener('click', function(e) {
+      e.stopPropagation(); // Impede conflito com o clique do infospot
       showImageModal('img/caju.jpg');
     });
 
