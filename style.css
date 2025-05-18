@@ -832,11 +832,16 @@ body.view-control-buttons .viewControlButton {
 /* --- Hotspot de câmera --- */
 .camera-hotspot {
   cursor: pointer;
+  margin-left: 40px;       /* Distância da câmera para o infospot */
+  position: relative;      /* Garante posicionamento correto */
+  z-index: 1;             /* Camada abaixo do tooltip */
+  transform: none !important; /* Remove transformações conflitantes */
 }
 
 .camera-hotspot-icon {
   width: 40px;
   height: 40px;
+  display: block;         /* Remove espaçamento indesejado */
 }
 
 /* --- Modal da imagem --- */
