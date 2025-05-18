@@ -95,21 +95,21 @@
     });
 
     data.infoHotspots.forEach(function(hotspot) {
-  // Cria o infospot de informação ("i")
-  var infoElement = createInfoHotspotElement(hotspot);
-  scene.hotspotContainer().createHotspot(infoElement, {
-    yaw: hotspot.yaw,
-    pitch: hotspot.pitch
-  });
+      // Cria o infospot de informação ("i")
+      var infoElement = createInfoHotspotElement(hotspot);
+      scene.hotspotContainer().createHotspot(infoElement, {
+        yaw: hotspot.yaw,
+        pitch: hotspot.pitch
+      });
 
-  // Cria o infospot de câmera ao lado
-  var cameraElement = createCameraHotspotElement(hotspot);
-  var offsetYaw = 0.1; // Ajuste a posição lateral do ícone de câmera
-  scene.hotspotContainer().createHotspot(cameraElement, {
-    yaw: hotspot.yaw + offsetYaw,
-    pitch: hotspot.pitch
-  });
-});
+      // Cria o infospot de câmera ao lado
+      var cameraElement = createCameraHotspotElement(hotspot);
+      var offsetYaw = 0.1; // Ajuste a posição lateral do ícone de câmera
+      scene.hotspotContainer().createHotspot(cameraElement, {
+        yaw: hotspot.yaw + offsetYaw,
+        pitch: hotspot.pitch
+      });
+    });
 
     return {
       data: data,
@@ -256,7 +256,6 @@
   }
 
   function createLinkHotspotElement(hotspot) {
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -296,7 +295,6 @@
   }
 
   function createInfoHotspotElement(hotspot) {
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -356,7 +354,6 @@
     };
 
   function createCameraHotspotElement(hotspot) {
-    
     // Cria wrapper do hotspot
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -455,5 +452,4 @@
     document.body.appendChild(modal);
     setTimeout(() => modal.classList.add('visible'), 10);
   }
-  
 })();
