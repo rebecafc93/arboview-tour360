@@ -104,7 +104,7 @@
 
       // Cria o infospot de câmera ao lado
       var cameraElement = createCameraHotspotElement(hotspot);
-      var offsetYaw = -0.15; // Ajuste a posição lateral do ícone de câmera
+      var offsetYaw = -0.1; // Ajuste a posição lateral do ícone de câmera
       scene.hotspotContainer().createHotspot(cameraElement, {
         yaw: hotspot.yaw + offsetYaw,
         pitch: hotspot.pitch
